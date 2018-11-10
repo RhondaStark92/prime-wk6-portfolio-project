@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
@@ -12,9 +14,11 @@ class ProjectItem extends Component {
     let project = this.props.item;
     return (
       <Card id="card" key={project.id}>
+      <CardActionArea>
+        {/* <CardMedia src="/images/goat_small.jpg"/> */}
         <CardContent>       
           <Typography id="TableBody" key={project.id}>
-            {/* <img src={fav.url}/> */}
+            <img src="/images/goat_small.jpg"/>
             {project.name}<br/>
             {project.description}<br/>
             {project.thumbnail}<br/>
@@ -27,7 +31,8 @@ class ProjectItem extends Component {
             <Button target="_blank" href={project.website}>
                 Website
             </Button>
-        </CardContent>
+          </CardContent>
+        </CardActionArea>
       </Card> 
     )
   }
