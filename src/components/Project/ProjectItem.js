@@ -30,7 +30,6 @@ class ProjectItem extends Component {
             {/* <img src={project.thumbnail}/> */}
             {project.name}<br/>
             {project.description}<br/>
-            {project.thumbnail}<br/>
             {project.date_completed}<br/>
             {project.tag_id}<br/>
             </Typography> 
