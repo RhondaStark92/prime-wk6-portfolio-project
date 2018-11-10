@@ -15,7 +15,7 @@ function* rootSaga() {
 
 }
 
-// Create sagaMiddleware
+// Crea  nte sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
 // Used to store projects returned from the server
