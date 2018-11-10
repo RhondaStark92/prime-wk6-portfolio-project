@@ -8,17 +8,26 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
+const style = {
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 200,
+  },
+};
+
 class ProjectItem extends Component {
 
   render() {
     let project = this.props.item;
     return (
-      <Card id="card" key={project.id}>
+      <Card style={style.card} id="card" key={project.id}>
       <CardActionArea>
-        {/* <CardMedia src="/images/goat_small.jpg"/> */}
+        <CardMedia image={project.thumbnail} style={style.media}/>
         <CardContent>       
           <Typography id="TableBody" key={project.id}>
-            <img src={project.thumbnail}/>
+            {/* <img src={project.thumbnail}/> */}
             {project.name}<br/>
             {project.description}<br/>
             {project.thumbnail}<br/>
