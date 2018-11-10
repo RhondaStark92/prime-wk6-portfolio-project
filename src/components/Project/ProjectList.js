@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Grid from '@material-ui/core/Grid';
+import ProjectItem from './ProjectItem';
 
 class ProjectList extends Component {
 
@@ -14,11 +16,11 @@ getProjects = () => {
 
   render() {
     return (
-        <div>
-           {this.props.reduxState.projects.map(project =>
-            <li key={project.id}>{project.name}</li>
-           )} 
-        </div>
+      <Grid container spacing={16}>
+          {this.props.reduxState.projects.map(project =>
+          <ProjectItem item={project} />
+          )} 
+      </Grid>
     );
   }
 }

@@ -7,7 +7,7 @@ class ProjectView extends Component {
 
   render() {
     return (
-        <div>
+        <div className="App">
             <p>Project View</p>
             <ProjectList />
         </div>
