@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 
 import './App.css';
 import Header from '../Header/Header';
-import ProjectView from '../ProjectView/ProjectView';
+import ProjectView from '../Project/ProjectView';
 import AdminView from '../AdminView/AdminView';
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
+        <div className="App, Container">
         <Header/>
           <Route exact path="/" component= {ProjectView} />
           <Route path="/admin" component= {AdminView} />

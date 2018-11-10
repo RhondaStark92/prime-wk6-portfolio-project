@@ -9,13 +9,32 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
+import { call, put, takeEvery } from 'redux-saga/effects';
+import axios from 'axios';
+
+// SAGA GENERATOR FUNCTIONS
+
+// Saga to retrieve the projects from the server
+// this is the ASYNCH call to the server/DB
+// and then the dispatch to the reducer
+function* getProjects (action) {
+    try {
+        // axios get call to project
+        const response = yield call(axios.get, '/api/project')
+        console.log('project api call', response);
+        yield put ( {type: 'SET_PROJECTS', payload: response.data });
+    }
+    catch (error) {
+          console.log('error with get request to /api/project', error);
+    }
+}
 
 // Create the rootSaga generator function
 function* rootSaga() {
-
+    yield takeEvery('GET_PROJECTS', getProjects);
 }
 
-// Crea  nte sagaMiddleware
+// Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
 // Used to store projects returned from the server
