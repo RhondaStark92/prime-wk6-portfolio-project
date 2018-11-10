@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 class ProjectItem extends Component {
 
@@ -17,11 +18,15 @@ class ProjectItem extends Component {
             {project.name}<br/>
             {project.description}<br/>
             {project.thumbnail}<br/>
-            {project.github}<br/>
-            {project.website}<br/>
             {project.date_completed}<br/>
             {project.tag_id}<br/>
             </Typography> 
+            <Button target="_blank" href={project.github}>
+                GitHub
+            </Button>
+            <Button target="_blank" href={project.website}>
+                Website
+            </Button>
         </CardContent>
       </Card> 
     )

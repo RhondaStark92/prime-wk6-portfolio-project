@@ -8,7 +8,7 @@ class ProjectView extends Component {
   render() {
     return (
         <div className="App">
-            <p>Project View</p>
+            <h2>Rhonda Stark</h2>
             <ProjectList />
         </div>
     );
