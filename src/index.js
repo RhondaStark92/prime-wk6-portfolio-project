@@ -53,4 +53,5 @@ sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, 
     document.getElementById('root'));
+    
 registerServiceWorker();
