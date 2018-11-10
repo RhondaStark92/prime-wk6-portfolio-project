@@ -18,7 +18,7 @@ class ProjectItem extends Component {
         {/* <CardMedia src="/images/goat_small.jpg"/> */}
         <CardContent>       
           <Typography id="TableBody" key={project.id}>
-            <img src="/images/goat_small.jpg"/>
+            <img src={project.thumbnail}/>
             {project.name}<br/>
             {project.description}<br/>
             {project.thumbnail}<br/>
