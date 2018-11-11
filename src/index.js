@@ -60,11 +60,27 @@ function* deleteProject(action) {
     } 
 }
 
+// Saga to retrieve the tags from the server
+// this is the ASYNCH call to the server/DB
+// and then the dispatch to the reducer
+function* getTags (action) {
+    try {
+        // axios get call to project
+        const response = yield call(axios.get, '/api/tag')
+        console.log('tag api call', response);
+        yield put ( {type: 'SET_TAGS', payload: response.data });
+    }
+    catch (error) {
+          console.log('error with get request to /api/tag', error);
+    }
+}
+
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('GET_PROJECTS', getProjects);
     yield takeEvery('ADD_PROJECT', addProject);
     yield takeEvery('DELETE_PROJECT', deleteProject);
+    yield takeEvery('GET_TAGS', getTags);
 }
 
 // Create sagaMiddleware

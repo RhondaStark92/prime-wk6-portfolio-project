@@ -5,7 +5,7 @@ const router = express.Router();
 
 // GET ROUTER FOR TAG
 router.get('/', (req, res) => {
-  const queryText = 'SELECT name, id FROM tag';
+  const queryText = 'SELECT name, id FROM tags';
   pool.query(queryText)
     .then((result) => { res.send(result.rows); })
     .catch((err) => {
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
 // GET DETAILS ROUTER FOR TAG
 router.get('/details/:id', (req, res) => {
-  const queryText = 'SELECT * FROM tag WHERE id=$1';
+  const queryText = 'SELECT * FROM tags WHERE id=$1';
   pool.query(queryText, [req.params.id])
     .then((result) => { res.send(result.rows); })
     .catch((err) => {
@@ -28,7 +28,7 @@ router.get('/details/:id', (req, res) => {
 // POST ROUTER FOR NEW TAG
 router.post('/', (req, res) => {
   const newTag = req.body;
-  const queryText = `INSERT INTO tag 
+  const queryText = `INSERT INTO tags
                     ("name") VALUES ($1)`;
   const queryValues = [
     newTag.name,
@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
 router.put('/', (req, res) => {
   const updatedTag = req.body;
 
-  const queryText = `UPDATE table_name
+  const queryText = `UPDATE tags
   SET "name" = $1 WHERE id=$2;`;
 
   const queryValues = [
@@ -63,7 +63,7 @@ router.put('/', (req, res) => {
 // DELETE ROUTER FOR TAG
 router.delete('/', (req, res) => {
   console.log('in delete on server', req.query.id);
-  const queryText = 'DELETE FROM tag WHERE id=$1';
+  const queryText = 'DELETE FROM tags WHERE id=$1';
   pool.query(queryText, [req.query.id])
     .then(() => { res.sendStatus(200); })
     .catch((err) => {

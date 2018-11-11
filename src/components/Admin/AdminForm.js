@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import TagSelector from './TagSelector';
 
 const mapStateToProps = reduxState => ({
   reduxState,
@@ -31,29 +32,42 @@ class AdminForm extends Component {
       });
   }
 
+  validProjectData = () => {
+    let check = this.state.newProject;
+    if (check.name === '' || check.description === '') {
+      alert('Please enter a name and description.');
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   addNewProject = event => {
       event.preventDefault();
-      this.props.dispatch({ type: 'ADD_PROJECT', payload: this.state.newProject });
-      this.setState({
-          newProject: emptyProjectObject
-      });
+      if (this.validProjectData()) {
+        this.props.dispatch({ type: 'ADD_PROJECT', payload: this.state.newProject });
+        this.setState({
+            newProject: emptyProjectObject
+        });
+      }
   }
 
   render() {
     return (
       <div className="App">
-            <h3>Add Project</h3>
-            {/* <pre>{JSON.stringify(this.state.newProject)}</pre> */}
-            <form onSubmit={this.addNewProject}>
-              <input type='text' name="name" placeholder="project" value={this.state.newProject.name} onChange={this.handleChange} />
-              <input type='text' name="description" placeholder="description" value={this.state.newProject.description} onChange={this.handleChange} />
-              <input type='text' name="thumbnail" placeholder="thumbnail" value={this.state.newProject.thumbnail} onChange={this.handleChange} />
-              <input type='text' name="website" placeholder="website" value={this.state.newProject.website} onChange={this.handleChange} />
-              <input type='text' name="github" placeholder="github" value={this.state.newProject.github} onChange={this.handleChange} />
-              <input type='text' name="date_completed" placeholder="date_completed" value={this.state.newProject.date_completed} onChange={this.handleChange} />
-              <input type='text' name="tag_id" placeholder="tag_id" value={this.state.newProject.tag_id} onChange={this.handleChange} />
-              <input type='submit' value='Add New Project' />
-            </form>
+        <h3>Add Project</h3>
+        {/* <pre>{JSON.stringify(this.state.newProject)}</pre> */}
+        <form onSubmit={this.addNewProject}>
+          <input type='text' name="name" placeholder="project" value={this.state.newProject.name} onChange={this.handleChange} />
+          <input type='text' name="description" placeholder="description" value={this.state.newProject.description} onChange={this.handleChange} />
+          <input type='text' name="thumbnail" placeholder="thumbnail" value={this.state.newProject.thumbnail} onChange={this.handleChange} />
+          <input type='text' name="website" placeholder="website" value={this.state.newProject.website} onChange={this.handleChange} />
+          <input type='text' name="github" placeholder="github" value={this.state.newProject.github} onChange={this.handleChange} />
+          <input type='date' name="date_completed" placeholder="date_completed" value={this.state.newProject.date_completed} onChange={this.handleChange} />
+          <TagSelector />
+          {/* <input type='text' name="tag_id" placeholder="tag_id" value={this.state.newProject.tag_id} onChange={this.handleChange} /> */}
+          <input type='submit' value='Add New Project' />
+        </form>
       </div>
     ); // end return
   } // end render

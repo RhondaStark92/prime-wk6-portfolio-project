@@ -5,6 +5,15 @@ import AdminList from './AdminList';
 
 class AdminView extends Component {
 
+  // mounting GET response to the DOM, when rendered
+  componentDidMount() {
+    this.getTags();
+  };
+
+  getTags = () => {
+    this.props.dispatch({ type: 'GET_TAGS'})
+  }
+
   render() {
     return (
       <div className="App">
@@ -15,4 +24,8 @@ class AdminView extends Component {
   }
 }
 
-export default AdminView;
+const mapReduxStateToProps = (reduxState) => ({
+  reduxState
+});
+
+export default connect(mapReduxStateToProps) (AdminView);
