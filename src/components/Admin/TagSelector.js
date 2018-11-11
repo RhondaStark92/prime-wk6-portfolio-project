@@ -22,16 +22,19 @@ class TagSelector extends Component {
     });
   }
 
-  handleChangeTag = (event) => {
-    this.setState({ TagState: event.target.value });
-  }
+  // handleChangeTag = (event) => {
+  //   console.log('inhandlechangeTag', event.target.value);
+    
+  //   this.setState({ TagState: event.target.value });
+  // }
 
   render(){
-    console.log('tags', this.props.reduxState.tags);
+    // console.log('tags', this.props.reduxState.tags);
     return (
       <Select autowidth="false"
-        value={this.state.TagState}
-        onChange={this.handleChangeTag}
+        value={this.props.tag_id}
+        name="tag_id"
+        onChange={this.props.handleChange}
       >
         {this.renderTagOptions()}
       </Select>

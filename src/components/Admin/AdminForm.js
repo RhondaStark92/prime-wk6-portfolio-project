@@ -17,7 +17,7 @@ const emptyProjectObject = {
   website: '',
   github: '',
   date_completed: '',
-  tag_id: '',
+  tag_id: '1',
 }
 
 class AdminForm extends Component {
@@ -27,7 +27,7 @@ class AdminForm extends Component {
   state = {newProject: emptyProjectObject};
 
   handleChange = event => {
-      console.log('event happended', this.state)
+      console.log('event happended', event, this.state);
       this.setState({
         newProject: {
             ...this.state.newProject,
@@ -74,7 +74,8 @@ class AdminForm extends Component {
           placeholder="Date Completed"
           onChange={this.handleChange}
           value={this.state.newProject.date_completed}/>
-          <TagSelector />
+          <TagSelector tag_id={this.state.newProject.tag_id} 
+            handleChange={this.handleChange}/>
         </div>
         <div>
           <Input
@@ -94,6 +95,7 @@ class AdminForm extends Component {
           <Input
             id="standard-multiline-static"
             label="Description"
+            name="description"
             placeholder="Description of project can go here."
             multiline
             rows="4"
@@ -107,7 +109,6 @@ class AdminForm extends Component {
             placeholder="Thumbnail"
             onChange={this.handleChange}
             value={this.state.newProject.thumbnail}/>
-          <TagSelector />
         </div>
         <div>
         <input type='submit' value='Add New Project' />
