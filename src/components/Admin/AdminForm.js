@@ -61,7 +61,7 @@ class AdminForm extends Component {
       <div className="App">
         <h3>Add Project</h3>
         {/* <pre>{JSON.stringify(this.state.newProject)}</pre> */}
-        <form onSubmit={this.addNewProject}>
+        <form className="Admin-form" onSubmit={this.addNewProject}>
         <div>
           <Input
           name="name"
@@ -90,15 +90,28 @@ class AdminForm extends Component {
             onChange={this.handleChange}
             value={this.state.newProject.github}/>
         </div>
-          {/* <input type='text' name="name" placeholder="project" value={this.state.newProject.name} onChange={this.handleChange} /> */}
-          <input type='text' name="description" placeholder="description" value={this.state.newProject.description} onChange={this.handleChange} />
-          <input type='text' name="thumbnail" placeholder="thumbnail" value={this.state.newProject.thumbnail} onChange={this.handleChange} />
-          {/* <input type='text' name="website" placeholder="website" value={this.state.newProject.website} onChange={this.handleChange} />
-          <input type='text' name="github" placeholder="github" value={this.state.newProject.github} onChange={this.handleChange} /> */}
-          {/* <input type='date' name="date_completed" placeholder="date_completed" value={this.state.newProject.date_completed} onChange={this.handleChange} /> */}
+        <div>
+          <Input
+            id="standard-multiline-static"
+            label="Description"
+            placeholder="Description of project can go here."
+            multiline
+            rows="4"
+            value={this.state.newProject.description}
+            onChange={this.handleChange}
+            margin="normal"
+          />
+          <Input
+            type="text"
+            name="thumbnail"
+            placeholder="Thumbnail"
+            onChange={this.handleChange}
+            value={this.state.newProject.thumbnail}/>
           <TagSelector />
-          {/* <input type='text' name="tag_id" placeholder="tag_id" value={this.state.newProject.tag_id} onChange={this.handleChange} /> */}
-          <input type='submit' value='Add New Project' />
+        </div>
+        <div>
+        <input type='submit' value='Add New Project' />
+        </div>
         </form>
       </div>
     ); // end return

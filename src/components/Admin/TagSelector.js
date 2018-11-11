@@ -15,7 +15,7 @@ class TagSelector extends Component {
       return (
         <MenuItem
           key={i}
-          value={Tag.name}>
+          value={Tag.id}>
           {Tag.name}
         </MenuItem>
       );
@@ -29,7 +29,7 @@ class TagSelector extends Component {
   render(){
     console.log('tags', this.props.reduxState.tags);
     return (
-      <Select
+      <Select autowidth="false"
         value={this.state.TagState}
         onChange={this.handleChangeTag}
       >

@@ -1,6 +1,10 @@
 .Admin {
   text-align: center;
   margin: 20px;
-  margin-left: 20%;
-  margin-right: 20%
+  margin-left: 15%;
+  margin-right: 15%
+}
+
+.Admin-form {
+  text-align: left;
 }
