@@ -29,9 +29,29 @@ function* getProjects (action) {
     }
 }
 
+// Saga to retrieve the projects from the server
+// this is the ASYNCH call to the server/DB
+// and then the dispatch to the reducer
+function* addProject(action) {
+    console.log('in post saga for project', action.payload);
+    try {
+        // axios asynch call to add project to server
+        yield call(axios.post, '/api/project', action.payload);
+        // will need to make a call to update the project
+        alert('Your project has been added.')
+        yield put( { type: 'GET_PROJECTS' } );
+
+
+    }
+    catch (error) {
+        console.log('error with add project post request');
+    }
+}
+
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('GET_PROJECTS', getProjects);
+    yield takeEvery('ADD_PROJECT', addProject);
 }
 
 // Create sagaMiddleware

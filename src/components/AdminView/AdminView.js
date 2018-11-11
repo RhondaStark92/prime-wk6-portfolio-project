@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import AdminList from './AdminList';
 
 const mapStateToProps = reduxState => ({
   reduxState,
@@ -57,6 +58,7 @@ class AdminView extends Component {
               <input type='submit' value='Add New Project' />
             </form>
           </div>
+          <AdminList />
       </div>
     );
   }
