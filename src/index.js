@@ -47,11 +47,24 @@ function* addProject(action) {
         console.log('error with add project post request');
     }
 }
+function* deleteProject(action) {
+    console.log('in delete saga', action.payload);
+    try {
+      //axios call to remove project
+      yield call(axios.delete, '/api/project', {params: {id: action.payload}});
+      yield put( { type: 'GET_PROJECTS' } );
+    }
+    catch (error) {
+      console.log('error with delete project request to /api/project');
+      
+    } 
+}
 
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('GET_PROJECTS', getProjects);
     yield takeEvery('ADD_PROJECT', addProject);
+    yield takeEvery('DELETE_PROJECT', deleteProject);
 }
 
 // Create sagaMiddleware

@@ -18,6 +18,10 @@ class AdminList extends Component {
     this.props.dispatch({ type: 'GET_PROJECTS'})
   }
 
+  handleClick = (id) => {
+    this.props.dispatch({ type: 'DELETE_PROJECT', payload: id})
+  }
+
   render() {
     return (
       <Table>
@@ -31,7 +35,9 @@ class AdminList extends Component {
           {this.props.reduxState.projects.map(project =>
             <TableRow key={project.id}>
               <TableCell>{project.name}</TableCell>
-              <TableCell><Button>X</Button></TableCell>
+              <TableCell>
+                <Button onClick={() => this.handleClick(project.id)}>X</Button>
+              </TableCell>
             </TableRow>
           )}
         </TableBody>

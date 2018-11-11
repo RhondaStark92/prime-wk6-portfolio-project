@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route} from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
 import ProjectView from '../Project/ProjectView';
-import AdminView from '../AdminView/AdminView';
+import AdminView from '../Admin/AdminView';
 
 class App extends Component {
   // Renders the entire app on the DOM
