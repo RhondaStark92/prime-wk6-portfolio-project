@@ -10,9 +10,9 @@ class ProjectList extends Component {
     this.getProjects();
   };
 
-getProjects = () => {
-  this.props.dispatch({ type: 'GET_PROJECTS'})
-}
+  getProjects = () => {
+    this.props.dispatch({ type: 'GET_PROJECTS'})
+  }
 
   render() {
     return (
