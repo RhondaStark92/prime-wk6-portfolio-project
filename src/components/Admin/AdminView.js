@@ -16,7 +16,7 @@ class AdminView extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="Admin">
         <AdminForm />
         <AdminList />
       </div>
