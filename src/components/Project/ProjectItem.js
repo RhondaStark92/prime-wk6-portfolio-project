@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment'
 
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -11,11 +12,16 @@ import Button from '@material-ui/core/Button';
 const style = {
   card: {
     maxWidth: 345,
+    margin: 25,
   },
   media: {
     height: 200,
   },
 };
+
+// const formattedDate = (dateIn) => {
+//   return dateIn.toLocaleDateString('en-US');
+// }
 
 class ProjectItem extends Component {
 
@@ -26,13 +32,10 @@ class ProjectItem extends Component {
       <CardActionArea>
         <CardMedia image={project.thumbnail} style={style.media}/>
         <CardContent>       
-          <Typography id="TableBody" key={project.id}>
-            {/* <img src={project.thumbnail}/> */}
-            {project.name}<br/>
-            {project.description}<br/>
-            {project.date_completed}<br/>
-            {project.tag_id}<br/>
-            </Typography> 
+            <h2>{project.name}</h2>
+            <p>{project.description}</p><br/>
+            <p>{moment(project.date_completed).format('LL')}</p><br/>
+            <p>{project.tag}</p><br/>
             <Button target="_blank" href={project.github}>
                 GitHub
             </Button>

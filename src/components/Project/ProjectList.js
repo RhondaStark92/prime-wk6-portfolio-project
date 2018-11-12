@@ -18,7 +18,7 @@ class ProjectList extends Component {
     return (
       <Grid container spacing={16}>
           {this.props.reduxState.projects.map(project =>
-          <ProjectItem item={project} />
+          <ProjectItem key={project.id} item={project} />
           )} 
       </Grid>
     );
