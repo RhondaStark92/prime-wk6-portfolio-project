@@ -19,10 +19,6 @@ const style = {
   },
 };
 
-// const formattedDate = (dateIn) => {
-//   return dateIn.toLocaleDateString('en-US');
-// }
-
 class ProjectItem extends Component {
 
   render() {
@@ -36,12 +32,10 @@ class ProjectItem extends Component {
             <p>{project.description}</p><br/>
             <p>{moment(project.date_completed).format('LL')}</p><br/>
             <p>{project.tag}</p><br/>
-            <Button target="_blank" href={project.github}>
-                GitHub
-            </Button>
-            <Button target="_blank" href={project.website}>
-                Website
-            </Button>
+            {project.github != '' && 
+              <Button target="_blank" href={project.github}>GitHub</Button>}
+            {project.website != '' && 
+            <Button target="_blank" href={project.website}>Website</Button>}
           </CardContent>
         </CardActionArea>
       </Card> 
