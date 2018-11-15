@@ -10,7 +10,7 @@ class TagSelector extends Component {
   };
 
   renderTagOptions() {
-
+    // 
     return this.props.reduxState.tags.map((Tag, i) => {
       return (
         <MenuItem
@@ -18,18 +18,11 @@ class TagSelector extends Component {
           value={Tag.id}>
           {Tag.name}
         </MenuItem>
-      );
-    });
-  }
-
-  // handleChangeTag = (event) => {
-  //   console.log('inhandlechangeTag', event.target.value);
-    
-  //   this.setState({ TagState: event.target.value });
-  // }
+      ); // end return
+    }); // end map
+  } // end renderTagOptions
 
   render(){
-    // console.log('tags', this.props.reduxState.tags);
     return (
       <Select autowidth="false"
         value={this.props.tag_id}
@@ -38,8 +31,9 @@ class TagSelector extends Component {
       >
         {this.renderTagOptions()}
       </Select>
-    )}
-}
+    )
+  } // end return
+} // end class TagSelector
 
 const mapReduxStateToProps = (reduxState) => ({
   reduxState

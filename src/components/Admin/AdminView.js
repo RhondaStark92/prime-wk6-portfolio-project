@@ -10,6 +10,7 @@ class AdminView extends Component {
     this.getTags();
   };
 
+  // get all the tags and load to redux 
   getTags = () => {
     this.props.dispatch({ type: 'GET_TAGS'})
   }
@@ -20,9 +21,9 @@ class AdminView extends Component {
         <AdminForm />
         <AdminList />
       </div>
-    );
-  }
-}
+    ); // end return
+  } // end render
+} // end class AdminView
 
 const mapReduxStateToProps = (reduxState) => ({
   reduxState

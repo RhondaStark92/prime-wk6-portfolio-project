@@ -6,6 +6,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 
 class AdminList extends Component {
 
@@ -14,13 +16,29 @@ class AdminList extends Component {
     this.getProjects();
   };
 
+  // get all projects
   getProjects = () => {
     this.props.dispatch({ type: 'GET_PROJECTS'})
   }
 
+  // handle Delete click
   handleClick = (id) => {
-    this.props.dispatch({ type: 'DELETE_PROJECT', payload: id})
-  }
+    // confirm the deletion 
+    confirmAlert({
+      title: 'Confirm to delete',
+      message: 'Are you sure? This is permanent.',
+      buttons: [
+        {
+          label: 'Delete',
+          onClick: () => this.props.dispatch({ type: 'DELETE_PROJECT', payload: id})
+        },
+        {
+          label: 'Cancel',
+          onClick: () => console.log('cancelled delete do nothing.')
+        }
+      ]
+    })// end confirmAlert
+  } // end handleClick
 
   render() {
     return (

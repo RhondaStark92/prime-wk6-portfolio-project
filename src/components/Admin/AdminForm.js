@@ -26,6 +26,7 @@ class AdminForm extends Component {
 
   state = {newProject: emptyProjectObject};
 
+  // update state from inputs
   handleChange = event => {
       console.log('event happended', event, this.state);
       this.setState({
@@ -36,6 +37,7 @@ class AdminForm extends Component {
       });
   }
 
+  // verify that name and description has been filled out
   validProjectData = () => {
     let check = this.state.newProject;
     if (check.name === '' || check.description === '') {
@@ -46,6 +48,7 @@ class AdminForm extends Component {
     }
   };
 
+  // add a new project only if valid name and description
   addNewProject = event => {
       event.preventDefault();
       if (this.validProjectData()) {
@@ -63,27 +66,32 @@ class AdminForm extends Component {
         {/* <pre>{JSON.stringify(this.state.newProject)}</pre> */}
         <form className="Admin-form" onSubmit={this.addNewProject}>
         <div>
+          {/* Project name input */}
           <Input
           name="name"
           placeholder="Project Name"
           onChange={this.handleChange}
           value={this.state.newProject.name}/>
+          {/* Project date completed date selector */}
           <Input
           type="date"
           name="date_completed"
           placeholder="Date Completed"
           onChange={this.handleChange}
           value={this.state.newProject.date_completed}/>
+          {/* Select field for tag */}
           <TagSelector tag_id={this.state.newProject.tag_id} 
             handleChange={this.handleChange}/>
         </div>
         <div>
+          {/* Website input */}
           <Input
             type="text"
             name="website"
             placeholder="Website"
             onChange={this.handleChange}
             value={this.state.newProject.website}/>
+          {/* Github input */}
           <Input
             type="text"
             name="github"
@@ -92,6 +100,7 @@ class AdminForm extends Component {
             value={this.state.newProject.github}/>
         </div>
         <div>
+          {/* Description input field */}
           <Input
             id="standard-multiline-static"
             label="Description"
@@ -103,6 +112,7 @@ class AdminForm extends Component {
             onChange={this.handleChange}
             margin="normal"
           />
+          {/* Thumbnail input */}
           <Input
             type="text"
             name="thumbnail"
