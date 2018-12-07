@@ -1,27 +1,32 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography'
+// import './Header.css';
+
+import styled from 'styled-components'
+const AppWrapper = styled.div`
+  text-align: center;
+`
+const AppHeader = styled.div`
+  background-color: #5291a4;
+  height: 6rem;
+  padding: 1rem;
+  color: white;
+`
 
 const Header = () => {
     return(
         <div>
-        <AppBar position="static">
-            <Toolbar>
+        <AppWrapper position="static">
+            <AppHeader>
                 <Typography variant="title" color="inherit">
                 Project Portfolio
                 </Typography>
-                    <Button component={Link} to="/admin">
-                        Admin
-                    </Button>
-                    <Button component={Link} to="/">
-                        Projects
-                    </Button>
-            </Toolbar>
+                    <Link to="/admin">Admin</Link>
+                    <Link to="/">Projects</Link>
+            </AppHeader>
 
-        </AppBar>
+        </AppWrapper>
         </div>
     )
 }
