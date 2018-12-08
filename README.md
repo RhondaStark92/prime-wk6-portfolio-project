@@ -50,9 +50,3 @@ Steps to get the development environment running.
 3. `npm run client`
 4.  Navigate to `localhost:3000`
 
-## Feature List
-
-- [ ] Use the GitHub API to get user information to display at the top of the page
-- [ ] Improve styling on the page using Material UI
-- [ ] Include a form on the admin page for adding new tags
-- [ ] Implement additional features of the GitHub API
