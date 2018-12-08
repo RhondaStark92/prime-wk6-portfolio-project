@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App, Container">
-        <Header/>
+        <Header />
           <Route exact path="/" component= {MyProjectView} />
           <Route path="/admin" component= {AdminView} />
         </div>
